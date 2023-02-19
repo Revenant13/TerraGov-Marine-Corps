@@ -19,7 +19,7 @@ SUBSYSTEM_DEF(points)
 	///Personal supply points base gain per update
 	var/psp_base_gain = 0.5
 	///Personal supply points limit
-	var/psp_limit = 500
+	var/psp_limit = 600
 	///Var used to calculate points difference between updates
 	var/supply_points_old = 0
 	///Assoc list of xeno points: xeno_points_by_hive["hivenum"]
