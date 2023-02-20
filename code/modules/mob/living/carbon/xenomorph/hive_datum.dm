@@ -594,7 +594,7 @@
 	var/datum/xeno_caste/caste = X?.xeno_caste
 	if(caste.death_evolution_delay <= 0)
 		return
-	if(!caste_death_timers[caste.caste_type_path]) 
+	if(!caste_death_timers[caste.caste_type_path])
 		caste_death_timers[caste.caste_type_path] = addtimer(CALLBACK(src, .proc/end_caste_death_timer, caste), caste.death_evolution_delay , TIMER_STOPPABLE)
 
 /datum/hive_status/proc/on_xeno_revive(mob/living/carbon/xenomorph/X)
@@ -1088,8 +1088,8 @@ to_chat will check for valid clients itself already so no need to double check f
 	var/threes = length_char(xenos_by_tier[XENO_TIER_THREE])
 	var/fours = length_char(xenos_by_tier[XENO_TIER_FOUR])
 
-	tier3_xeno_limit = max(threes, FLOOR((zeros + ones + twos + fours) / 3 + length(evotowers) + 1, 1))
-	tier2_xeno_limit = max(twos, (zeros + ones + fours) + length(evotowers) * 2 + 1 - threes)
+	tier3_xeno_limit = max(threes, FLOOR((zeros + ones + twos + fours) / 3 + length(evotowers) * 2 + 1, 1))
+	tier2_xeno_limit = max(twos, (zeros + ones + fours) + length(evotowers) * 4 + 1 - threes)
 
 // ***************************************
 // *********** Corrupted Xenos
