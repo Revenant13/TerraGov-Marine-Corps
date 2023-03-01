@@ -1425,7 +1425,7 @@ Imports
 
 /datum/supply_packs/imports/mbx900/sabot
 	name = "MBX-900 Sabot Shells"
-	contains = list(/obj/item/ammo_magazine/shotgun/mbx900/sabot)
+	contains = list(/obj/item/ammo_magazine/shotgun/mbx900)
 	cost = 50
 	available_against_xeno_only = TRUE
 /datum/supply_packs/imports/mosin
