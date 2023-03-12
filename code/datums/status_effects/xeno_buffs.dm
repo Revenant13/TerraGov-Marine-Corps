@@ -613,8 +613,13 @@
 		X.remove_status_effect(STATUS_EFFECT_XENO_FEAST)
 		return
 	var/heal_amount = X.maxHealth*0.08
-	HEAL_XENO_DAMAGE(X, heal_amount, FALSE)
-	adjustOverheal(X, heal_amount / 2)
+	for(var/mob/living/carbon/xenomorph/affected_xeno AS in GLOB.hive_datums[XENO_HIVE_NORMAL].xenos_by_zlevel["[X.z]"])
+		if(affected_xeno.faction != X.faction)
+			continue
+		if(!line_of_sight(X, affected_xeno, 4) || get_dist(X, affected_xeno) > 4)
+			continue
+		HEAL_XENO_DAMAGE(affected_xeno, heal_amount, FALSE)
+		adjustOverheal(affected_xeno, heal_amount / 2)
 	X.use_plasma(plasma_drain)
 
 // ***************************************
