@@ -158,7 +158,7 @@
 
 	REMOVE_TRAIT(owner_xeno, TRAIT_HANDS_BLOCKED, src)
 	target_human.blur_eyes(1)
-	target_human.blood_volume -= 20
+	target_human.blood_volume -= 10
 	add_cooldown()
 
 #undef DO_DRAIN_ACTION
