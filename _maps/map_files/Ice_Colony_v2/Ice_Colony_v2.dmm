@@ -14243,10 +14243,6 @@
 	},
 /obj/item/tool/pickaxe/drill,
 /obj/item/tool/shovel/snow,
-/obj/item/pinpointer{
-	pixel_x = 9;
-	pixel_y = 28
-	},
 /obj/item/storage/box/lightstick/red,
 /turf/open/floor/tile/dark,
 /area/ice_colony/surface/excavationbarracks)
@@ -22598,7 +22594,6 @@
 /area/ice_colony/surface/excavationbarracks)
 "bXk" = (
 /obj/structure/rack,
-/obj/item/pinpointer,
 /obj/item/storage/bag/ore,
 /obj/item/storage/bag/ore,
 /obj/item/storage/box/lightstick/red,
