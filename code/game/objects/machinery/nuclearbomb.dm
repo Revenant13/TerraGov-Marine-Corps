@@ -114,7 +114,7 @@
 			g_auth = I
 		if(/obj/item/disk/nuclear/blue)
 			b_auth = I
-	if(r_auth && g_auth && b_auth)
+	if((r_auth && g_auth && b_auth) || (r_auth && g_auth) || (r_auth && b_auth) || (g_auth && b_auth))
 		has_auth = TRUE
 
 	updateUsrDialog()
@@ -355,7 +355,7 @@
 				g_auth = I
 			if("blue")
 				b_auth = I
-		if(r_auth && g_auth && b_auth)
+		if((r_auth && g_auth && b_auth) || (r_auth && g_auth) || (r_auth && b_auth) || (g_auth && b_auth))
 			has_auth = TRUE
 
 ///Returns time left on the nuke
