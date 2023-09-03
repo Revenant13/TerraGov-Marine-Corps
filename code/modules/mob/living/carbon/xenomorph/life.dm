@@ -26,7 +26,6 @@
 		update_progression()
 		update_evolving()
 
-	handle_living_sunder_updates()
 	handle_living_health_updates()
 	handle_living_plasma_updates()
 	update_action_button_icons()
@@ -67,27 +66,6 @@
 		else
 			heal_wounds(XENO_STANDING_HEAL * ruler_healing_penalty, TRUE) //Major healing nerf if standing.
 	updatehealth()
-
-///Handles sunder modification/recovery during life.dm for xenos
-/mob/living/carbon/xenomorph/proc/handle_living_sunder_updates()
-
-	if(!sunder || on_fire) //No sunder, no problem; or we're on fire and can't regenerate.
-		return
-
-	var/sunder_recov = xeno_caste.sunder_recover * -0.5 //Baseline
-
-	if(resting) //Resting doubles sunder recovery
-		sunder_recov *= 2
-
-	if(ispath(loc_weeds_type, /obj/alien/weeds/resting)) //Resting weeds double sunder recovery
-		sunder_recov *= 2
-
-	if(recovery_aura)
-		sunder_recov *= 1 + recovery_aura * 0.1 //10% bonus per rank of recovery aura
-
-	SEND_SIGNAL(src, COMSIG_XENOMORPH_SUNDER_REGEN, src)
-
-	adjust_sunder(sunder_recov)
 
 /mob/living/carbon/xenomorph/proc/handle_critical_health_updates()
 	if(loc_weeds_type)

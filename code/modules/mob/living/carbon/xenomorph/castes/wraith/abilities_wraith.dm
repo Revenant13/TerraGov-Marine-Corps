@@ -662,8 +662,6 @@ GLOBAL_LIST_INIT(wraith_banish_very_short_duration_list, typecacheof(list(
 	var/target_initial_burn_damage = 0
 	/// Initial brute damage of the target
 	var/target_initial_brute_damage = 0
-	/// Initial sunder of the target
-	var/target_initial_sunder = 0
 	/// How far can you rewind someone
 	var/range = 5
 
@@ -695,9 +693,6 @@ GLOBAL_LIST_INIT(wraith_banish_very_short_duration_list, typecacheof(list(
 	last_target_locs_list = list(get_turf(A))
 	target_initial_brute_damage = targeted.getBruteLoss()
 	target_initial_burn_damage = targeted.getFireLoss()
-	if(isxeno(A))
-		var/mob/living/carbon/xenomorph/xeno_target = targeted
-		target_initial_sunder = xeno_target.sunder
 	addtimer(CALLBACK(src, PROC_REF(start_rewinding)), start_rewinding)
 	RegisterSignal(targeted, COMSIG_MOVABLE_MOVED, PROC_REF(save_move))
 	targeted.add_filter("prerewind_blur", 1, radial_blur_filter(0.04))
@@ -737,8 +732,6 @@ GLOBAL_LIST_INIT(wraith_banish_very_short_duration_list, typecacheof(list(
 		targeted.status_flags &= ~(INCORPOREAL|GODMODE)
 		REMOVE_TRAIT(owner, TRAIT_IMMOBILE, TIMESHIFT_TRAIT)
 		if(isxeno(targeted))
-			var/mob/living/carbon/xenomorph/xeno_target = targeted
-			xeno_target.sunder = target_initial_sunder
 			targeted.heal_overall_damage(targeted.getBruteLoss() - target_initial_brute_damage, targeted.getFireLoss() - target_initial_burn_damage, updating_health = TRUE)
 		targeted.remove_filter("rewind_blur")
 		REMOVE_TRAIT(targeted, TRAIT_TIME_SHIFTED, XENO_TRAIT)

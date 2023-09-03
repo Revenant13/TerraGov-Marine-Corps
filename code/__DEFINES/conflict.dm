@@ -50,7 +50,6 @@
 #define AMMO_IGNORE_ARMOR (1<<9) //Projectile direct damage will ignore both hard and soft armor
 #define AMMO_IGNORE_RESIST (1<<10) //Unused.
 #define AMMO_BALLISTIC (1<<11) //Generates blood splatters on mob hit
-#define AMMO_SUNDERING (1<<12)
 #define AMMO_SPECIAL_PROCESS (1<<13)
 #define AMMO_SENTRY (1<<14) //Used to identify ammo from sentry guns and other automated sources
 #define AMMO_FLAME (1<<15) //Used to identify flamethrower projectiles and similar projectiles

@@ -177,8 +177,6 @@
 	if(xeno_caste.plasma_max > 0)
 		stat("Plasma:", "[plasma_stored]/[xeno_caste.plasma_max]")
 
-	stat("Sunder:", "[100-sunder]% armor left")
-
 	stat("Personal Psy Points:", "[round(SSpoints.personal_psy_points[ckey], 0.1)]")
 
 	//Very weak <= 1.0, weak <= 2.0, no modifier 2-3, strong <= 3.5, very strong <= 4.5
@@ -583,24 +581,6 @@
 
 /mob/living/carbon/xenomorph/hivemind/setup_verbs()
 	return
-
-/mob/living/carbon/xenomorph/adjust_sunder(adjustment)
-	. = ..()
-	if(.)
-		return
-	sunder = clamp(sunder + adjustment, 0, xeno_caste.sunder_max)
-
-/mob/living/carbon/xenomorph/set_sunder(new_sunder)
-	. = ..()
-	if(.)
-		return
-	sunder = clamp(new_sunder, 0, xeno_caste.sunder_max)
-
-/mob/living/carbon/xenomorph/get_sunder()
-	. = ..()
-	if(.)
-		return
-	return (sunder * -0.01) + 1
 
 /mob/living/carbon/xenomorph/adjust_stagger(amount)
 	if(is_charging >= CHARGE_ON) //If we're charging we don't accumulate more stagger stacks.

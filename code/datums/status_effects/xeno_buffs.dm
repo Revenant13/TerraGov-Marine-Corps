@@ -158,7 +158,6 @@
 	var/heal_amount = clamp(abs(amount) * (DRONE_ESSENCE_LINK_SHARED_HEAL * stacks), 0, heal_target.maxHealth)
 	heal_target.adjustFireLoss(-max(0, heal_amount - heal_target.getBruteLoss()), passive = TRUE)
 	heal_target.adjustBruteLoss(-heal_amount, passive = TRUE)
-	heal_target.adjust_sunder(-heal_amount/10)
 	heal_target.balloon_alert(heal_target, "Shared heal: +[heal_amount]")
 
 /// Toggles the link signals on or off.
@@ -219,7 +218,6 @@
 	var/heal_amount = buff_owner.maxHealth * 0.01
 	buff_owner.adjustFireLoss(-max(0, heal_amount - buff_owner.getBruteLoss()), passive = TRUE)
 	buff_owner.adjustBruteLoss(-heal_amount, passive = TRUE)
-	buff_owner.adjust_sunder(-1)
 	return ..()
 
 // ***************************************
@@ -678,11 +676,9 @@
 /datum/status_effect/healing_infusion
 	id = "healing_infusion"
 	alert_type = /atom/movable/screen/alert/status_effect/healing_infusion
-	//Buff ends whenever we run out of either health or sunder ticks, or time, whichever comes first
+	//Buff ends whenever we run out of health ticks, or time, whichever comes first
 	///Health recovery ticks
 	var/health_ticks_remaining
-	///Sunder recovery ticks
-	var/sunder_ticks_remaining
 
 /datum/status_effect/healing_infusion/on_creation(mob/living/new_owner, set_duration = HIVELORD_HEALING_INFUSION_DURATION, stacks_to_apply = HIVELORD_HEALING_INFUSION_TICKS)
 	if(!isxeno(new_owner))
@@ -691,7 +687,6 @@
 	duration = set_duration
 	owner = new_owner
 	health_ticks_remaining = stacks_to_apply //Apply stacks
-	sunder_ticks_remaining = stacks_to_apply
 	return ..()
 
 
@@ -702,12 +697,10 @@
 	ADD_TRAIT(owner, TRAIT_HEALING_INFUSION, TRAIT_STATUS_EFFECT(id))
 	owner.add_filter("hivelord_healing_infusion_outline", 3, outline_filter(1, COLOR_VERY_PALE_LIME_GREEN)) //Set our cool aura; also confirmation we have the buff
 	RegisterSignal(owner, COMSIG_XENOMORPH_HEALTH_REGEN, PROC_REF(healing_infusion_regeneration)) //Register so we apply the effect whenever the target heals
-	RegisterSignal(owner, COMSIG_XENOMORPH_SUNDER_REGEN, PROC_REF(healing_infusion_sunder_regeneration)) //Register so we apply the effect whenever the target heals
 
 /datum/status_effect/healing_infusion/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_HEALING_INFUSION, TRAIT_STATUS_EFFECT(id))
 	owner.remove_filter("hivelord_healing_infusion_outline")
-	UnregisterSignal(owner, list(COMSIG_XENOMORPH_HEALTH_REGEN, COMSIG_XENOMORPH_SUNDER_REGEN))
 
 	new /obj/effect/temp_visual/telekinesis(get_turf(owner)) //Wearing off VFX
 	new /obj/effect/temp_visual/healing(get_turf(owner))
@@ -745,24 +738,6 @@
 	var/burn_amount = min(patient.fireloss, total_heal_amount)
 	if(burn_amount)
 		patient.adjustFireLoss(-burn_amount, updating_health = TRUE)
-
-
-///Called when the target xeno regains Sunder via heal_wounds in life.dm
-/datum/status_effect/healing_infusion/proc/healing_infusion_sunder_regeneration(mob/living/carbon/xenomorph/patient)
-	SIGNAL_HANDLER
-
-	if(!sunder_ticks_remaining)
-		qdel(src)
-		return
-
-	if(!patient.loc_weeds_type) //Doesn't work if we're not on weeds
-		return
-
-	sunder_ticks_remaining-- //Decrement sunder ticks
-
-	new /obj/effect/temp_visual/telekinesis(get_turf(patient)) //Visual confirmation
-
-	patient.adjust_sunder(-1.5 * (1 + patient.recovery_aura * 0.05)) //5% bonus per rank of our recovery aura
 
 /atom/movable/screen/alert/status_effect/healing_infusion
 	name = "Healing Infusion"

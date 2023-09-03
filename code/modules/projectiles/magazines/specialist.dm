@@ -184,7 +184,7 @@
 
 /obj/item/ammo_magazine/rocket/recoilless/heat
 	name = "\improper 67mm HEAT shell"
-	desc = "A high explosive-anti tank shell for the RL-160 recoilless rifle. Fires a penetrating shot with no explosion. It will do moderate damage to all types of enemies, but does not sunder their armor. Requires specialized storage to carry."
+	desc = "A high explosive-anti tank shell for the RL-160 recoilless rifle. Fires a penetrating shot with no explosion. It will do moderate damage to all types of enemies. Requires specialized storage to carry."
 	icon_state = "shell_heat"
 	default_ammo = /datum/ammo/rocket/recoilless/heat
 

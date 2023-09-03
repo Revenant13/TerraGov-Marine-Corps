@@ -1505,8 +1505,6 @@ TUNNEL
 	desc = "The contents of this fruit are protected by a tough outer shell."
 	icon_state = "armor_fruit_immature"
 	mature_icon_state = "armor_fruit"
-	///How much total sunder should we remove
-	var/sunder_removal = 30
 
 /obj/structure/xeno/plant/armor_fruit/on_use(mob/user)
 	balloon_alert(user, "Consuming...")
@@ -1531,8 +1529,6 @@ TUNNEL
 
 	balloon_alert(user, "Armor restored")
 	to_chat(user, span_xenowarning("We shed our shattered scales as new ones grow to replace them!"))
-	var/mob/living/carbon/xenomorph/X = user
-	X.adjust_sunder(-sunder_removal)
 	playsound(user, "alien_drool", 25)
 	return ..()
 

@@ -344,7 +344,7 @@
 /datum/action/xeno_action/regenerate_skin
 	name = "Regenerate Skin"
 	action_icon_state = "regenerate_skin"
-	desc = "Regenerate your hard exoskeleton skin, restoring some health and removing all sunder."
+	desc = "Regenerate your hard exoskeleton skin, restoring some health."
 	ability_name = "regenerate skin"
 	use_state_flags = XACT_USE_FORTIFIED|XACT_USE_CRESTED|XACT_TARGET_SELF|XACT_IGNORE_SELECTED_ABILITY|XACT_KEYBIND_USE_ABILITY
 	plasma_cost = 80
@@ -374,7 +374,6 @@
 		span_notice("We shed our skin, showing the fresh new layer underneath!"))
 
 	X.do_jitter_animation(1000)
-	X.set_sunder(0)
 	X.heal_overall_damage(25, 25, updating_health = TRUE)
 	add_cooldown()
 	return succeed_activate()

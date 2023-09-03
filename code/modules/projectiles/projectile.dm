@@ -66,8 +66,6 @@
 	var/list/atom/movable/uncross_scheduled = list() // List of border movable atoms to check for when exiting a turf.
 
 	var/damage = 0
-	///ammo sundering value
-	var/sundering = 0
 	var/accuracy = 90 //Base projectile accuracy. Can maybe be later taken from the mob if desired.
 
 	///how many damage points the projectile loses per tiles travelled
@@ -152,7 +150,6 @@
 	icon_state 	= ammo.icon_state
 	damage 		= ammo.damage + bonus_damage //Mainly for emitters.
 	penetration = ammo.penetration
-	sundering 	= ammo.sundering
 	scatter		= ammo.scatter
 	airburst_multiplier = ammo.airburst_multiplier
 	accuracy   += ammo.accuracy
@@ -841,7 +838,7 @@ So if we are on the 32th absolute pixel coordinate we are on tile 1, but if we a
 	if(proj.ammo.flags_ammo_behavior & AMMO_SKIPS_ALIENS)
 		return FALSE
 	if(is_charging >= CHARGE_ON)
-		proj.damage -= proj.damage * (0.2 * get_sunder())
+		proj.damage -= proj.damage * 0.2
 	return ..()
 
 
@@ -861,7 +858,6 @@ So if we are on the 32th absolute pixel coordinate we are on tile 1, but if we a
 	if(HAS_TRAIT(proj, TRAIT_PROJ_HIT_SOMETHING))
 		proj.damage *= proj.ammo.on_pierce_multiplier
 		proj.penetration *= proj.ammo.on_pierce_multiplier
-		proj.sundering *= proj.ammo.on_pierce_multiplier
 	ADD_TRAIT(proj, TRAIT_PROJ_HIT_SOMETHING, BULLET_ACT_TRAIT)
 	SEND_SIGNAL(src, COMSIG_ATOM_BULLET_ACT, proj)
 
@@ -907,9 +903,6 @@ So if we are on the 32th absolute pixel coordinate we are on tile 1, but if we a
 		adjust_fire_stacks(proj.ammo.incendiary_strength)
 		if(IgniteMob())
 			feedback_flags |= (BULLET_FEEDBACK_FIRE)
-
-	if(proj.ammo.flags_ammo_behavior & AMMO_SUNDERING)
-		adjust_sunder(proj.sundering)
 
 	if(damage)
 		var/shrapnel_roll = do_shrapnel_roll(proj, damage)
@@ -1206,7 +1199,7 @@ So if we are on the 32th absolute pixel coordinate we are on tile 1, but if we a
 		return armor_val / total_weight
 
 /mob/living/carbon/xenomorph/get_soft_armor(armor_type, proj_def_zone)
-	return ..() * get_sunder()
+	return ..()
 
 
 /mob/living/proc/get_hard_armor(armor_type, proj_def_zone)
@@ -1217,7 +1210,7 @@ So if we are on the 32th absolute pixel coordinate we are on tile 1, but if we a
 	return affected_limb.hard_armor.getRating(armor_type)
 
 /mob/living/carbon/xenomorph/get_hard_armor(armor_type, proj_def_zone)
-	return ..() * get_sunder()
+	return ..()
 
 /mob/living/proc/bullet_soak_effect(obj/projectile/proj)
 	return
@@ -1367,16 +1360,6 @@ So if we are on the 32th absolute pixel coordinate we are on tile 1, but if we a
 		victim_feedback += "We burst into flames!! Auuugh! Resist to put out the flames!"
 
 	to_chat(src, span_highdanger("[victim_feedback.Join(" ")]"))
-
-// Sundering procs
-/mob/living/proc/adjust_sunder(adjustment)
-	return 0
-
-/mob/living/proc/set_sunder(new_sunder)
-	return FALSE
-
-/mob/living/proc/get_sunder()
-	return 0
 
 #undef BULLET_FEEDBACK_PEN
 #undef BULLET_FEEDBACK_SOAK

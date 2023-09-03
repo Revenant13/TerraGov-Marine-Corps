@@ -126,5 +126,5 @@
 	if(proj.ammo.flags_ammo_behavior & AMMO_SKIPS_ALIENS)
 		return FALSE
 	if((cardinal_move & REVERSE_DIR(dir)))
-		proj.damage -= proj.damage * (0.5 * get_sunder())
+		proj.damage -= proj.damage * 0.5
 	return ..()

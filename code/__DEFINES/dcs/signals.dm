@@ -522,7 +522,6 @@
 
 #define COMSIG_XENOMORPH_PLASMA_REGEN "xenomorph_plasma_regen"
 #define COMSIG_XENOMORPH_HEALTH_REGEN "xenomorph_health_regen"
-#define COMSIG_XENOMORPH_SUNDER_REGEN "xenomorph_sunder_regen"
 #define COMSIG_XENOMORPH_RESIN_JELLY_APPLIED "xenomorph_resin_jelly_applied"
 
 #define COMSIG_XENOMORPH_REST "xenomorph_rest"

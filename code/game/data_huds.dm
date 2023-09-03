@@ -434,25 +434,10 @@
 
 //Xeno status hud, for xenos
 /datum/atom_hud/xeno
-	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_SUNDER_HUD, XENO_FIRE_HUD, XENO_BANISHED_HUD)
+	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, XENO_FIRE_HUD, XENO_BANISHED_HUD)
 
 /datum/atom_hud/xeno_heart
 	hud_icons = list(HEART_STATUS_HUD)
-
-/mob/living/proc/hud_set_sunder()
-	return
-
-/mob/living/carbon/xenomorph/hud_set_sunder()
-	var/image/holder = hud_list[ARMOR_SUNDER_HUD]
-	if(!holder)
-		return
-
-	if(stat == DEAD)
-		holder.icon_state = "sundering0"
-		return
-
-	var/amount = min(round(sunder * 100 / xeno_caste.sunder_max, 10), 100)
-	holder.icon_state = "sundering[amount]"
 
 ///Set fire stacks on the hud
 /mob/living/proc/hud_set_firestacks()

@@ -94,12 +94,6 @@
 	var/list/soft_armor
 	var/list/hard_armor
 
-	// *** Sunder *** //
-	///How much sunder is recovered per tick
-	var/sunder_recover = 0.5
-	///What is the max amount of sunder that can be applied to a xeno (100 = 100%)
-	var/sunder_max = 100
-
 	// *** Ranged Attack *** //
 	///Delay timer for spitting
 	var/spit_delay = 6 SECONDS
@@ -280,7 +274,7 @@
 	appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
 	see_infrared = TRUE
 	hud_type = /datum/hud/alien
-	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_SUNDER_HUD, XENO_DEBUFF_HUD, XENO_FIRE_HUD, XENO_BANISHED_HUD)
+	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, XENO_DEBUFF_HUD, XENO_FIRE_HUD, XENO_BANISHED_HUD)
 	buckle_flags = NONE
 	faction = FACTION_XENO
 	initial_language_holder = /datum/language_holder/xeno
@@ -316,8 +310,6 @@
 	var/upgrade_stored = 0
 	///This will track their upgrade level.
 	var/upgrade = XENO_UPGRADE_INVALID
-	///sunder affects armour values and does a % removal before dmg is applied. 50 sunder == 50% effective armour values
-	var/sunder = 0
 	var/fire_resist_modifier = 0
 
 	var/obj/structure/xeno/tunnel/start_dig = null

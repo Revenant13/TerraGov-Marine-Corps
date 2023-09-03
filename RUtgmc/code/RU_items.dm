@@ -145,7 +145,6 @@ SUBSYSTEM_DEF(ru_items)
 	handful_amount = 8
 	damage = 60
 	penetration = 30
-	sundering = 3
 	damage_falloff = 0
 	shell_speed = 3.5
 
@@ -218,11 +217,10 @@ SUBSYSTEM_DEF(ru_items)
 	bullet_color = COLOR_SOFT_RED //Red bullets to indicate friendly fire restriction
 	hud_state = "smartgun"
 	hud_state_empty = "smartgun_empty"
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SUNDERING
+	flags_ammo_behavior = AMMO_BALLISTIC
 	accurate_range = 20
 	damage = 20
 	penetration = 10
-	sundering = 1.5
 
 /obj/item/ammo_magazine/packet/T25_rifle
 	name = "box of 10x26mm high-pressure"
@@ -327,13 +325,12 @@ SUBSYSTEM_DEF(ru_items)
 	name = "submachinegun ACP bullet"
 	hud_state = "smg"
 	hud_state_empty = "smg_empty"
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SUNDERING
+	flags_ammo_behavior = AMMO_BALLISTIC
 	accuracy_var_low = 7
 	accuracy_var_high = 7
 	damage = 20
 	accurate_range = 4
 	damage_falloff = 1
-	sundering = 0.4
 	penetration = 0
 	shrapnel_chance = 25
 
@@ -763,7 +760,6 @@ SUBSYSTEM_DEF(ru_items)
 	handful_amount = 5
 	damage = 100
 	penetration = 40
-	sundering = 0.5
 
 /datum/ammo/bullet/revolver/t500/on_hit_mob(mob/M,obj/projectile/P)
 	staggerstun(M, P, stagger = 0, slowdown = 0, knockback = 1)
@@ -774,7 +770,6 @@ SUBSYSTEM_DEF(ru_items)
 	handful_amount = 5
 	damage = 100
 	penetration = 40
-	sundering = 0
 
 /datum/ammo/bullet/revolver/t500/qk/on_hit_mob(mob/M,obj/projectile/P)
 	if(isxenoqueen(M))

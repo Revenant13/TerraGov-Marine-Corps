@@ -384,7 +384,7 @@
 /datum/keybinding/xeno/regenerate_skin
 	name = "regenerate_skin"
 	full_name = "Defender: Regenerate Skin"
-	description = "Regenerate your skin, restoring some health and removing all armor sunder."
+	description = "Regenerate your skin, restoring some health."
 	keybind_signal = COMSIG_XENOABILITY_REGENERATE_SKIN
 	hotkey_keys = list("F")
 
@@ -464,7 +464,7 @@
 /datum/keybinding/xeno/healing_infusion
 	name = "healing_infusion"
 	full_name = "Hivelord: Healing Infusion"
-	description = "Imbues a target xeno with healing energy, restoring extra Sunder and Health once every 2 seconds up to 5 times whenever it regenerates normally. 60 second duration."
+	description = "Imbues a target xeno with healing energy, restoring extra Health once every 2 seconds up to 5 times whenever it regenerates normally. 60 second duration."
 	keybind_signal = COMSIG_XENOABILITY_HEALING_INFUSION
 	hotkey_keys = list("X")
 
@@ -632,7 +632,7 @@
 /datum/keybinding/xeno/ravager_rage
 	name = "ravager_rage"
 	full_name = "Ravager: Rage"
-	description = "While active, you will temporarily recover plasma and sunder and gain a bonus to speed and melee damage in proportion to the percentage of your missing health. At negative HP your ability cooldowns reset and your slash damage restores health."
+	description = "While active, you will temporarily recover plasma and gain a bonus to speed and melee damage in proportion to the percentage of your missing health. At negative HP your ability cooldowns reset and your slash damage restores health."
 	keybind_signal = COMSIG_XENOABILITY_RAGE
 	hotkey_keys = list("Space")
 

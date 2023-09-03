@@ -305,8 +305,6 @@
 	)
 	///Determines the power of Rage's many effects. Power scales inversely with the Ravager's HP; min 0.25 at 50% of Max HP, max 1 while in negative HP. 0.5 and above triggers especial effects.
 	var/rage_power
-	///Determines the Sunder to impose when Rage ends
-	var/rage_sunder
 	///Determines the Plasma to remove when Rage ends
 	var/rage_plasma
 
@@ -389,9 +387,6 @@
 	rage_plasma = min(X.xeno_caste.plasma_max - X.plasma_stored, X.xeno_caste.plasma_max * rage_power) //Calculate the plasma to restore (and take away later)
 	X.plasma_stored += rage_plasma //Regain a % of our maximum plasma scaling with rage
 
-	rage_sunder = min(X.sunder, rage_power * 100) //Set our temporary Sunder recovery
-	X.adjust_sunder(-1 * rage_sunder) //Restores up to 50 Sunder temporarily.
-
 	X.xeno_melee_damage_modifier += rage_power  //Set rage melee damage bonus
 
 	X.add_movespeed_modifier(MOVESPEED_ID_RAVAGER_RAGE, TRUE, 0, NONE, TRUE, X.xeno_caste.speed * 0.5 * rage_power) //Set rage speed bonus
@@ -456,7 +451,6 @@
 
 	X.xeno_melee_damage_modifier = initial(X.xeno_melee_damage_modifier) //Reset rage melee damage bonus
 	X.remove_movespeed_modifier(MOVESPEED_ID_RAVAGER_RAGE) //Reset speed
-	X.adjust_sunder(rage_sunder) //Remove the temporary Sunder restoration
 	X.use_plasma(rage_plasma) //Remove the temporary Plasma
 
 	REMOVE_TRAIT(X, TRAIT_STUNIMMUNE, RAGE_TRAIT)
@@ -464,7 +458,6 @@
 	REMOVE_TRAIT(X, TRAIT_STAGGERIMMUNE, RAGE_TRAIT)
 	UnregisterSignal(X, COMSIG_XENOMORPH_ATTACK_LIVING)
 
-	rage_sunder = 0
 	rage_power = 0
 	rage_plasma = 0
 	X.playsound_local(X, 'sound/voice/hiss5.ogg', 50) //Audio cue

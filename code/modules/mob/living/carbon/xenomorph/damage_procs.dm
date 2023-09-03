@@ -20,9 +20,8 @@
 	if(status_flags & (INCORPOREAL|GODMODE))
 		return
 
-	var/bomb_effective_armor = (soft_armor.getRating("bomb")/100)*get_sunder()
+	var/bomb_effective_armor = soft_armor.getRating("bomb")/100
 	var/bomb_slow_multiplier = max(0, 1 - 3.5*bomb_effective_armor)
-	var/bomb_sunder_multiplier = max(0, 1 - bomb_effective_armor)
 
 	if(bomb_effective_armor >= 1)
 		return //immune
@@ -36,9 +35,6 @@
 
 	add_slowdown(max(0, ex_slowdown)) //Slowdown 2 for sentiel from nade
 	adjust_stagger(max(0, ex_slowdown - 2)) //Stagger 2 less than slowdown
-
-	//Sunder
-	adjust_sunder(max(0, 50 * (3 - severity) * bomb_sunder_multiplier))
 
 	//Damage
 	var/ex_damage = 40 + rand(0, 20) + 50*(4 - severity)  //changed so overall damage stays similar

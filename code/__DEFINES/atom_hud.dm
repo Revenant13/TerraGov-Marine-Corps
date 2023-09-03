@@ -16,7 +16,6 @@
 #define QUEEN_OVERWATCH_HUD "xeno_overwatch_hud" //indicates which xeno the queen is overwatching.
 #define ORDER_HUD "human_order_hud" //shows what orders are applied to marines
 #define PAIN_HUD "pain_hud" //displays human pain / preceived health.
-#define ARMOR_SUNDER_HUD "armor_sunder_hud" //displays how much sunder has been applied.
 #define XENO_REAGENT_HUD "xeno_reagent_hud" // displays sign based on reagent in human
 #define XENO_TACTICAL_HUD "xeno_tactical_hud" // displays xeno tactical elements such as tunnels and rally hive pings
 #define MACHINE_HEALTH_HUD "machine_health_hud" // displays machine health; part of /datum/atom_hud/squad
