@@ -13,17 +13,17 @@
 	gib_flick = "gibbed-a-boiler"
 
 	// *** Melee Attacks *** //
-	melee_damage = 17
+	melee_damage = 20
 
 	// *** Speed *** //
-	speed = 0.3
+	speed = 0.1
 
 	// *** Plasma *** //
-	plasma_max = 800
-	plasma_gain = 30
+	plasma_max = 1000
+	plasma_gain = 50
 
 	// *** Health *** //
-	max_health = 250
+	max_health = 325
 
 	// *** Evolution *** //
 	upgrade_threshold = TIER_THREE_YOUNG_THRESHOLD
@@ -38,24 +38,24 @@
 	can_flags = CASTE_CAN_BE_QUEEN_HEALED|CASTE_CAN_BE_GIVEN_PLASMA|CASTE_CAN_BE_LEADER|CASTE_CAN_HOLD_FACEHUGGERS|CASTE_CAN_HOLD_JELLY
 
 	// *** Defense *** //
-	soft_armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 0, BIO = 30, FIRE = 40, ACID = 30)
+	soft_armor = list(MELEE = 45, BULLET = 45, LASER = 45, ENERGY = 45, BOMB = 0, BIO = 37, FIRE = 45, ACID = 37)
 
 	// *** Ranged Attack *** //
-	spit_delay = 4 SECONDS
-	spit_types = list(/datum/ammo/xeno/boiler_gas, /datum/ammo/xeno/boiler_gas/corrosive)
+	spit_delay = 1 SECONDS
+	spit_types = list(/datum/ammo/xeno/boiler_gas, /datum/ammo/xeno/boiler_gas/lance, /datum/ammo/xeno/boiler_gas/corrosive, /datum/ammo/xeno/boiler_gas/corrosive/lance)
 
 	// *** Minimap Icon *** //
 	minimap_icon = "boiler"
 
 	// *** Boiler Abilities *** //
-	max_ammo = 4
-	bomb_strength = 1 //Multiplier to the effectiveness of the boiler glob.
-	bomb_delay = 32 SECONDS
+	max_ammo = 7
+	bomb_strength = 1.3
+	bomb_delay = 27 SECONDS
 
 	acid_spray_duration = 10 SECONDS
 	acid_spray_damage = 16
-	acid_spray_damage_on_hit = 35
-	acid_spray_structure_damage = 45
+	acid_spray_damage_on_hit = 47
+	acid_spray_structure_damage = 69
 
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
@@ -83,69 +83,16 @@
 	caste_desc = "Some sort of abomination. It looks a little more dangerous."
 	upgrade = XENO_UPGRADE_ONE
 
-	// *** Speed *** //
-	speed = 0.2
-
-	// *** Plasma *** //
-	plasma_max = 900
-	plasma_gain = 35
-
-	// *** Health *** //
-	max_health = 270
-
 	// *** Evolution *** //
 	upgrade_threshold = TIER_THREE_MATURE_THRESHOLD
-
-	// *** Defense *** //
-	soft_armor = list(MELEE = 45, BULLET = 45, LASER = 45, ENERGY = 45, BOMB = 0, BIO = 33, FIRE = 45, ACID = 33)
-
-	// *** Ranged Attack *** //
-	spit_delay = 3 SECONDS
-
-	acid_spray_damage_on_hit = 39
-	acid_spray_structure_damage = 53
-
-	// *** Boiler Abilities *** //
-	max_ammo = 5
-	bomb_strength = 1.1
-
-	bomb_delay = 32 SECONDS
 
 /datum/xeno_caste/boiler/elder
 	upgrade_name = "Elder"
 	caste_desc = "Some sort of abomination. It looks pretty strong."
 	upgrade = XENO_UPGRADE_TWO
 
-	// *** Melee Attacks *** //
-	melee_damage = 20
-
-	// *** Speed *** //
-	speed = 0.1
-
-	// *** Plasma *** //
-	plasma_max = 1000
-	plasma_gain = 40
-
-	// *** Health *** //
-	max_health = 290
-
 	// *** Evolution *** //
 	upgrade_threshold = TIER_THREE_ELDER_THRESHOLD
-
-	// *** Defense *** //
-	soft_armor = list(MELEE = 45, BULLET = 45, LASER = 45 , ENERGY = 45, BOMB = 0, BIO = 35, FIRE = 45, ACID = 35)
-
-	// *** Ranged Attack *** //
-	spit_delay = 2 SECONDS
-
-	acid_spray_damage_on_hit = 43
-	acid_spray_structure_damage = 61
-
-	// *** Boiler Abilities *** //
-	max_ammo = 6
-	bomb_strength = 1.2
-
-	bomb_delay = 32 SECONDS
 
 /datum/xeno_caste/boiler/ancient
 	upgrade_name = "Ancient"
@@ -153,82 +100,11 @@
 	upgrade = XENO_UPGRADE_THREE
 	ancient_message = "We are the master of ranged artillery. Let's bring death from above."
 
-	// *** Melee Attacks *** //
-	melee_damage = 20
-
-	// *** Speed *** //
-	speed = 0.1
-
-	// *** Plasma *** //
-	plasma_max = 1000
-	plasma_gain = 50
-
-	// *** Health *** //
-	max_health = 325
-
 	// *** Evolution *** //
 	upgrade_threshold = TIER_THREE_ANCIENT_THRESHOLD
-
-	// *** Defense *** //
-	soft_armor = list(MELEE = 45, BULLET = 45, LASER = 45, ENERGY = 45, BOMB = 0, BIO = 37, FIRE = 45, ACID = 37)
-
-	// *** Ranged Attack *** //
-	spit_delay = 1 SECONDS
-
-	acid_spray_damage_on_hit = 47
-	acid_spray_structure_damage = 69
-
-	// *** Boiler Abilities *** //
-	max_ammo = 7
-	bomb_strength = 1.3
-
-	bomb_delay = 27 SECONDS
 
 /datum/xeno_caste/boiler/primordial
 	upgrade_name = "Primordial"
 	caste_desc = "A horrendously effective alien siege engine."
 	upgrade = XENO_UPGRADE_FOUR
 	primordial_message = "We have refined the art of bombardement to perfection. End them before they can utter a desperate plea."
-
-	// *** Melee Attacks *** //
-	melee_damage = 20
-
-	// *** Speed *** //
-	speed = 0.1
-
-	// *** Plasma *** //
-	plasma_max = 1000
-	plasma_gain = 50
-
-	// *** Health *** //
-	max_health = 325
-
-	// *** Defense *** //
-	soft_armor = list(MELEE = 45, BULLET = 45, LASER = 45, ENERGY = 45, BOMB = 0, BIO = 37, FIRE = 45, ACID = 37)
-
-	// *** Ranged Attack *** //
-	spit_delay = 1 SECONDS
-	spit_types = list(/datum/ammo/xeno/boiler_gas, /datum/ammo/xeno/boiler_gas/lance, /datum/ammo/xeno/boiler_gas/corrosive, /datum/ammo/xeno/boiler_gas/corrosive/lance)
-
-	acid_spray_damage_on_hit = 47
-	acid_spray_structure_damage = 69
-
-	// *** Boiler Abilities *** //
-	max_ammo = 7
-	bomb_strength = 1.3
-
-	bomb_delay = 27 SECONDS
-
-	actions = list(
-		/datum/action/xeno_action/xeno_resting,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/psydrain,
-		/datum/action/xeno_action/place_acidwell,
-		/datum/action/xeno_action/activable/corrosive_acid/strong,
-		/datum/action/xeno_action/create_boiler_bomb,
-		/datum/action/xeno_action/activable/bombard,
-		/datum/action/xeno_action/toggle_long_range,
-		/datum/action/xeno_action/toggle_bomb,
-		/datum/action/xeno_action/activable/spray_acid/line/boiler,
-		/datum/action/xeno_action/dump_acid,
-	)
