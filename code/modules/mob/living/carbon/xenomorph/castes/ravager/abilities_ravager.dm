@@ -423,7 +423,7 @@
 	var/burn_damage = rager.getFireLoss()
 	if(!brute_damage && !burn_damage) //If we have no healable damage, don't bother proceeding
 		return
-	var/health_recovery = rage_power * damage * 0.75 //Amount of health we leech per slash
+	var/health_recovery = rage_power * damage //Amount of health we leech per slash
 	var/health_modifier
 	if(brute_damage) //First heal Brute damage, then heal Burn damage with remainder
 		health_modifier = min(brute_damage, health_recovery)*-1 //Get the lower of our Brute Loss or the health we're leeching
