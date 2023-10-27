@@ -336,7 +336,7 @@
 	if(X.health < 0) //If we're at less than 0 HP, it's time to max rage.
 		rage_power = 1
 
-	var/rage_power_radius = CEILING(rage_power * 7, 1) //Define radius of the SFX
+	var/rage_power_radius = CEILING(rage_power * 3, 1) //Define radius of the SFX
 
 	X.visible_message(span_danger("\The [X] becomes frenzied, bellowing with a shuddering roar!"), \
 	span_highdanger("We bellow as our fury overtakes us! RIP AND TEAR!"))
@@ -362,11 +362,11 @@
 			ravage.clear_cooldown() //Reset ravage cooldown
 		RegisterSignal(X, COMSIG_XENOMORPH_ATTACK_LIVING, PROC_REF(drain_slash))
 
-	for(var/turf/affected_tiles AS in RANGE_TURFS(rage_power_radius / 2, X.loc))
+	for(var/turf/affected_tiles AS in RANGE_TURFS(rage_power_radius, X.loc))
 		affected_tiles.Shake(duration = 1 SECONDS) //SFX
 
 	for(var/mob/living/affected_mob in cheap_get_humans_near(X, rage_power_radius) + cheap_get_xenos_near(X, rage_power_radius)) //Roar that applies cool SFX
-		if(affected_mob.stat) //We don't care about the dead/unconsious
+		if(affected_mob.stat || X) //We don't care about the dead/unconsious
 			continue
 
 		shake_camera(affected_mob, 1 SECONDS, 1)
